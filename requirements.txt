@@ -1,0 +1,12 @@
+MedPy==0.5.2
+numpy==2.2.6
+opencv-python==4.12.0.88
+pillow==11.3.0
+scikit-image==0.25.2
+scipy==1.15.3
+tensorboard==2.20.0
+tensorboardX==2.6.4
+torch==1.12.1
+# Didn't use torchvision==0.15.2 because it is incompatible with torch==1.12.1
+torchvision==0.13.1
+tqdm==4.67.1
