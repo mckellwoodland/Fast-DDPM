@@ -18,6 +18,7 @@ from datasets import data_transform, inverse_data_transform
 from datasets.pmub import PMUB
 from datasets.LDFDCT import LDFDCT
 from datasets.BRATS import BRATS
+from datasets.LIVER_CT import LIVER_CT
 from functions.ckpt_util import get_ckpt_path
 from skimage.metrics import structural_similarity as ssim
 import torchvision.utils as tvu
@@ -130,6 +131,9 @@ class Diffusion(object):
             # BRATS for brain image translation
             dataset = BRATS(self.config.data.train_dataroot, self.config.data.image_size, split='train')
             print('Start training your Fast-DDPM model on BRATS dataset.')
+        elif self.args.dataset=='LIVER_CT':
+            # LIVER_CT
+            dataset = LIVER_CT(self.config.data.train_dataroot, self.config.data.image_size, split='train')
         print('The scheduler sampling type is {}. The number of involved time steps is {} out of 1000.'.format(self.args.scheduler_type, self.args.timesteps))
         
         train_loader = data.DataLoader(
