@@ -94,7 +94,8 @@ def parse_args_and_config():
     args.log_path = os.path.join(args.exp, "logs", args.doc)
 
     # parse config file
-    with open(os.path.join("configs", args.config), "r") as f:
+    #with open(os.path.join("configs", args.config), "r") as f:
+    with open(args.configs, "r") as f:
         config = yaml.safe_load(f)
     new_config = dict2namespace(config)
 
