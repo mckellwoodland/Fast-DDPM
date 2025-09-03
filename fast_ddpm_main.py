@@ -94,6 +94,7 @@ def parse_args_and_config():
     args.log_path = os.path.join(args.exp, "logs", args.doc)
 
     # parse config file
+    # Get rid of configs preprend
     #with open(os.path.join("configs", args.config), "r") as f:
     with open(args.config, "r") as f:
         config = yaml.safe_load(f)
@@ -229,19 +230,20 @@ def main():
         if args.sample:
             if args.dataset=='PMUB':
                 runner.sr_sample()
-            elif args.dataset=='LDFDCT' or args.dataset=='BRATS':
+            # Add LIVER_CT dataset
+            elif args.dataset=='LDFDCT' or args.dataset=='BRATS' or args.dataset=='LIVER_CT':
                 runner.sg_sample()
             else:
-                raise Exception("This script only supports LDFDCT, BRATS and PMUB as sampling dataset. Feel free to add your own.")
+                raise Exception("This script only supports LDFDCT, BRATS, LIVER_CT, and PMUB as sampling dataset. Feel free to add your own.")
         elif args.test:
             runner.test()
         else:
             if args.dataset=='PMUB':
                 runner.sr_train()
-            elif args.dataset=='LDFDCT' or args.dataset=='BRATS':
+            elif args.dataset=='LDFDCT' or args.dataset=='BRATS' or args.dataset=='LIVER_CT':
                 runner.sg_train()
             else:
-                raise Exception("This script only supports LDFDCT, BRATS and PMUB as training dataset. Feel free to add your own.")
+                raise Exception("This script only supports LDFDCT, BRATS, LIVER_CT, and PMUB as training dataset. Feel free to add your own.")
     except Exception:
         logging.error(traceback.format_exc())
 
