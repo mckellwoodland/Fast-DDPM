@@ -3,7 +3,7 @@ from torch.utils.data import Dataset
 import glob
 import os
 
-from .sr_util import get_paths_from_npys, brats_transform_augment
+from .sr_util import transform_augment
 
 
 class LIVER_CT(Dataset):
