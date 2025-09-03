@@ -14,7 +14,7 @@ data:
 
 model:
         type: "sg"
-        in_channel: 2
+        in_channels: 2
         out_ch: 1
         ch: 128
         ch_mult: [1, 1, 2, 2, 4, 4]
