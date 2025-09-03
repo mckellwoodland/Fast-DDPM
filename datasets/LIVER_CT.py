@@ -1,6 +1,7 @@
 from PIL import Image
 from torch.utils.data import Dataset
 import glob
+import os
 
 from .sr_util import get_paths_from_npys, brats_transform_augment
 
@@ -9,7 +10,7 @@ class LIVER_CT(Dataset):
     def __init__(self, dataroot, img_size, split='train'):
         self.img_size = img_size
         self.split = split
-        self.img_pths = glob.glob(dataroot + "*.png", recursive=True)
+        self.img_pths = glob.glob(os.path.join(dataroot, "*.png"), recursive=True)
         self.data_len = len(self.img_pths)
         
     def __len__(self):
